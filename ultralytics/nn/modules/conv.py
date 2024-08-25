@@ -346,6 +346,29 @@ class ConcatHead(nn.Module):
     def forward(self, x):
         """Concatenates and returns predicted bounding boxes and class probabilities."""
 
+        # print(f"Input type: {type(x)}")
+        # print(f"Input length: {len(x)}")
+        # print(f"Type of x[0]: {type(x[0])}")
+        # print(f"Type of x[1]: {type(x[1])}")
+
+        # print(x[0].keys())
+        # print(x[1].keys())
+
+        # print(list(x[0].keys())[0])
+        # print(type(x[0][list(x[0].keys())[0]]))
+        # print(list(x[0].keys())[1])
+        # print(type(x[0][list(x[0].keys())[1]]))
+        # print(list(x[1].keys())[0])
+        # print(type(x[1][list(x[1].keys())[0]]))
+        # print(list(x[1].keys())[1])
+        # print(type(x[1][list(x[1].keys())[1]]))
+
+        if isinstance(x[0], dict):
+            x[0] = x[0]["one2many"]
+        
+        if isinstance(x[1], dict):
+            x[1] = x[1]["one2many"]
+
         # x is a list of length 2
         # Each element is either a tuple or just the decoded features
         # depending whether it's being exported.
@@ -358,10 +381,19 @@ class ConcatHead(nn.Module):
         elif isinstance(x[0], list): # when returned raw outputs
             # The shape is used for stride creation in tasks.py.
             # Feature maps will have to be decoded individually if used as they can't be merged.
+            print(len(x[0]))
+            print(x[0][0].shape)
+            print(len(x[1]))
+            print(x[1][0].shape)
             return [torch.cat((x0, x1), dim=1) for x0, x1 in zip(x[0], x[1])]
         else:
             preds1 = x[0]
             preds2 = x[1]
+
+        # print(f"preds1 type: {type(preds1)}")
+        # print(f"preds1 shape: {preds1.shape if isinstance(preds1, torch.Tensor) else 'Not a tensor'}")
+        # print(f"preds2 type: {type(preds2)}")
+        # print(f"preds2 shape: {preds2.shape if isinstance(preds2, torch.Tensor) else 'Not a tensor'}")
 
         # Concatenate the new head outputs as extra outputs
 

@@ -141,7 +141,7 @@ Ultralytics provides various installation methods including pip, conda, and Dock
 
 See the `ultralytics` [pyproject.toml](https://github.com/ultralytics/ultralytics/blob/main/pyproject.toml) file for a list of dependencies. Note that all examples above install all required dependencies.
 
-!!! tip "Tip"
+!!! tip
 
     PyTorch requirements vary by operating system and CUDA requirements, so it's recommended to install PyTorch first following instructions at [https://pytorch.org/get-started/locally](https://pytorch.org/get-started/locally/).
 
@@ -208,7 +208,7 @@ The Ultralytics command line interface (CLI) allows for simple single-line comma
         yolo cfg
         ```
 
-!!! warning "Warning"
+!!! warning
 
     Arguments must be passed as `arg=val` pairs, split by an equals `=` sign and delimited by spaces between pairs. Do not use `--` argument prefixes or commas `,` between arguments.
 
@@ -253,7 +253,7 @@ For example, users can load a model, train it, evaluate its performance on a val
 
 ## Ultralytics Settings
 
-The Ultralytics library provides a powerful settings management system to enable fine-grained control over your experiments. By making use of the `SettingsManager` housed within the `ultralytics.utils` module, users can readily access and alter their settings. These are stored in a YAML file and can be viewed or modified either directly within the Python environment or via the Command-Line Interface (CLI).
+The Ultralytics library provides a powerful settings management system to enable fine-grained control over your experiments. By making use of the `SettingsManager` housed within the `ultralytics.utils` module, users can readily access and alter their settings. These are stored in a JSON file in the environment user configuration directory, and can be viewed or modified directly within the Python environment or via the Command-Line Interface (CLI).
 
 ### Inspecting Settings
 

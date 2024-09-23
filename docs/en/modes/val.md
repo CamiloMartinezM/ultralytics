@@ -41,13 +41,13 @@ These are the notable functionalities offered by YOLOv8's Val mode:
 - **CLI and Python API:** Choose from command-line interface or Python API based on your preference for validation.
 - **Data Compatibility:** Works seamlessly with datasets used during the training phase as well as custom datasets.
 
-!!! tip "Tip"
+!!! tip
 
     * YOLOv8 models automatically remember their training settings, so you can validate a model at the same image size and on the original dataset easily with just `yolo val model=yolov8n.pt` or `model('yolov8n.pt').val()`
 
 ## Usage Examples
 
-Validate trained YOLOv8n model accuracy on the COCO8 dataset. No argument need to passed as the `model` retains its training `data` and arguments as model attributes. See Arguments section below for a full list of export arguments.
+Validate trained YOLOv8n model accuracy on the COCO8 dataset. No arguments are needed as the `model` retains its training `data` and arguments as model attributes. See Arguments section below for a full list of export arguments.
 
 !!! example
 
@@ -165,7 +165,7 @@ These benefits ensure that your models are evaluated thoroughly and can be optim
 
 ### Can I validate my YOLOv8 model using a custom dataset?
 
-Yes, you can validate your YOLOv8 model using a custom dataset. Specify the `data` argument with the path to your dataset configuration file. This file should include paths to the validation data, class names, and other relevant details.
+Yes, you can validate your YOLOv8 model using a [custom dataset](https://docs.ultralytics.com/datasets/). Specify the `data` argument with the path to your dataset configuration file. This file should include paths to the validation data, class names, and other relevant details.
 
 Example in Python:
 
